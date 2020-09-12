@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>The HTML5 Herald</title>
+    <meta name="description" content="Notes" />
+    <meta name="author" content="Ishita" />
+
+    <link rel="stylesheet" href="css/styles.css?v=1.0" />
+  </head>
+
+  <body>
+    {% for post in posts %}
+    <div class="card">
+      <h3><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h3>
+      <p>Posted on {{ post.date_posted |date:"F d, Y"}}</p>
+      <p>{{ post.content }}</p>
+    </div>
+    <div>
+      <button class="button"><a href="{% url 'post-create' %}">Create</a></button>
+      <button class="button"><a href="{% url 'post-update' object.id %}">Update</a></button>
+      <button class="button"><a href="{% url 'post-delete' object.id %}">Delete</button>
+    </div>
+    {% endfor %}
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
